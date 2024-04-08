@@ -90,13 +90,15 @@ if ($conn->connect_error) {
 </div>
 
 <div class="container">
-  <?php 
+<?php
     $sql = "SELECT * FROM `notes`";
-    $result = mysqli_query($conn,$sql);
-    while($row = mysqli_fetch_assoc($result)){
-      echo $row['Srno']."$row['Title']."of".$row['description'].$row['time'];
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo $row['Srno'] . ". Title is " . $row['Title'] . ". Description is " . $row['description'] . ". Time is " . $row['time'];
+        echo "<br>";
     }
-  ?>
+?>
+
 </div>
 
 </body>
