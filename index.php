@@ -1,3 +1,20 @@
+<?php 
+  // creating the database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "note";
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+// check  if connection is successfull or not
+if ($conn->connect_error) {
+    die("Connection failed: ". $conn->connect_error);
+}
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -68,6 +85,18 @@
   </h3>
  
   <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+
+  <button  class=" btn btn-primary my-3">Add note</button>
+</div>
+
+<div class="container">
+  <?php 
+    $sql = "SELECT * FROM `notes`";
+    $result = mysqli_query($conn,$sql);
+    while($row = mysqli_fetch_assoc($result)){
+      echo $row['Srno']."$row['Title']."of".$row['description'].$row['time'];
+    }
+  ?>
 </div>
 
 </body>
