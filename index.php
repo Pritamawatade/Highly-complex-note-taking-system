@@ -144,7 +144,7 @@ else{
   }
   ?>
   
-  
+  <?php
   if($update){
     echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
     <strong>Success!</strong> Your note has been updated successfully
