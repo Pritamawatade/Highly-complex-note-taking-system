@@ -1,13 +1,11 @@
 <?php  
-// INSERT INTO `notes` (`sno`, `title`, `description`, `tstamp`) VALUES (NULL, 'But Books', 'Please buy books from Store', current_timestamp());
 $insert = false;
 $update = false;
-$delete = false;
 // Connect to the Database 
 $servername = "localhost";
-$username = "root";
-$password = "";
-$database = "note";
+$username = "id22060733_root";
+$password = "000Webhostsss777p?";
+$database = "id22060733_note";
 
 // Create a connection
 $conn = mysqli_connect($servername, $username, $password, $database);
@@ -17,12 +15,7 @@ if (!$conn){
     die("Sorry we failed to connect: ". mysqli_connect_error());
 }
 
-if(isset($_GET['delete'])){
-  $sno = $_GET['delete'];
-  $delete = true;
-  $sql = "DELETE FROM `notes` WHERE `sno` = $sno";
-  $result = mysqli_query($conn, $sql);
-}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 if (isset( $_POST['snoEdit'])){
   // Update the record
@@ -91,7 +84,7 @@ else{
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form action="index11.php" method="POST">
+        <form action="index.php" method="POST">
           <div class="modal-body">
             <input type="hidden" name="snoEdit" id="snoEdit">
             <div class="form-group">
@@ -150,17 +143,8 @@ else{
   </div>";
   }
   ?>
-  <?php
-  if($delete){
-    echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-    <strong>Success!</strong> Your note has been deleted successfully
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-      <span aria-hidden='true'>×</span>
-    </button>
-  </div>";
-  }
-  ?>
-  <?php
+  
+  
   if($update){
     echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
     <strong>Success!</strong> Your note has been updated successfully
@@ -172,7 +156,7 @@ else{
   ?>
   <div class="container my-4">
     <h2>Add a Note to iNotes</h2>
-    <form action="index11.php" method="POST">
+    <form action="index.php" method="POST">
       <div class="form-group">
         <label for="title">Note Title</label>
         <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
@@ -209,7 +193,7 @@ else{
             <th scope='row'>". $sno . "</th>
             <td>". $row['title'] . "</td>
             <td>". $row['description'] . "</td>
-            <td> <button class='edit btn btn-sm btn-primary' id=".$row['sno'].">Edit</button> <button class='delete btn btn-sm btn-primary' id=d".$row['sno'].">Delete</button>  </td>
+            <td> <button class='edit btn btn-sm btn-primary' id=".$row['sno'].">Edit</button>  </td>
           </tr>";
         } 
           ?>
@@ -254,22 +238,6 @@ else{
       })
     })
 
-    deletes = document.getElementsByClassName('delete');
-    Array.from(deletes).forEach((element) => {
-      element.addEventListener("click", (e) => {
-        console.log("edit ");
-        sno = e.target.id.substr(1);
-
-        if (confirm("Are you sure you want to delete this note!")) {
-          console.log("yes");
-          window.location = `/crud/index11.php?delete=${sno}`;
-          // TODO: Create a form and use post request to submit a form
-        }
-        else {
-          console.log("no");
-        }
-      })
-    })
   </script>
 </body>
 
