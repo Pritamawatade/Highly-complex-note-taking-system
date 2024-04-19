@@ -3,9 +3,9 @@ $insert = false;
 $update = false;
 // Connect to the Database 
 $servername = "localhost";
-$username = "id22060733_root";
-$password = "000Webhostsss777p?";
-$database = "id22060733_note";
+$username = "root";
+$password = "";
+$database = "note";
 
 // Create a connection
 $conn = mysqli_connect($servername, $username, $password, $database);
